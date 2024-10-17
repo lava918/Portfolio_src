@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>Lavanya Sharma</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+            color: #fff;
+        }
+
+        .video-background {
+            position: relative;
+            width: 100%; /* Set your desired width */
+            height: 700px; /* Set your desired height */
+            overflow: hidden;
+        }
+
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+        }
+
+        .content {
+            padding: 50px;
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            top: 45%;
+            transform: translateY(-50%);
+        }
+
+        #element{
+            font-size: 28px;
+            font-weight: 700;
+            padding: 4px;
+        }
+        body, html {
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: auto;
+        }
+        /* Chrome, Safari, and Opera */
+        body::-webkit-scrollbar {
+            width: 0px;  /* Set scrollbar width to 0 */
+            background: transparent;  /* Make the scrollbar track transparent */
+        }
+        
+        section {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        #sec-1 {
+            background-color: #000;
+        }
+        #sec-2 {
+            background-color: aliceblue;
+        }
+        .scroll-down {
+            height: 50px;
+            width: 30px;
+            border: 2px solid #fff;
+            position: absolute;
+            left: 48%;
+            bottom: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .scroll-down::before,
+        .scroll-down::after {
+            content: "";
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            height: 10px;
+            width: 10px;
+            transform: translate(-50%, -100%) rotate(45deg);
+            border: 2px solid #fff;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-top: transparent;
+            border-left: transparent;
+            animation: scroll-down 2s ease-in-out infinite;
+        }
+        .scroll-down::before {
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            top: 30%;
+            animation-delay: 0.3s;
+            /* animation: scroll-down 1s ease-in-out infinite; */
+        }
+        
+        @keyframes scroll-down {
+            0% {
+                /* top:20%; */
+                opacity: 0;
+            }
+            30% {
+                opacity: 1;
+            }
+            60% {
+                opacity: 1;
+            }
+            100% {
+                top: 90%;
+                opacity: 0;
+            }
+        }
+        
+        
+        .components{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            color: #fff;
+        }
+        .components div{
+            background-color: #000;
+            height: 240px;
+            margin: 40px;
+            width: 280px;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            border-radius: 22px;
+            border: none;
+        }
+        .components .about button{
+            border: none;
+            background: transparent;
+            font-size: 20px;
+            padding: 38px;
+        }
+        .components .more button{
+            border: none;
+            background: transparent;
+            font-size: 20px;
+            padding: 42px;
+        }
+        .components .contact button{
+            border: none;
+            background: transparent;
+            font-size: 20px;
+            padding: 42px;
+        }
+        
+        
+        .about {
+            background: url(https://i.ibb.co/Fmzhpz7/black.jpg);
+            position: relative;
+            width: 100%; /* Adjust as needed */
+            height: 100%; /* Adjust as needed */
+            overflow: hidden;
+            
+        }
+        
+        .about button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5); /* Optional: Adds a semi-transparent background */
+            color: white;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        
+        .about button h3 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        
+        .contact {
+            background: url(https://i.ibb.co/sgSbXqK/white.jpg);
+            object-fit: cover;
+            position: relative;
+            width: 100%; /* Adjust as needed */
+            height: 100%; /* Adjust as needed */
+            overflow: hidden;
+        }
+        
+        
+        .components .contact button h3{
+            color: #000;
+            font-size: 24px;
+            
+        }
+        
+        .contact button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5); /* Optional: Adds a semi-transparent background */
+            color: #000;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        
+        .contact button h3 {
+            margin: 0;
+            font-size: 24px;
+            
+        }
+        
+        .more {
+            background: url(https://i.ibb.co/RSYjCyk/grey.webp);
+            position: relative;
+            width: 100%; /* Adjust as needed */
+            height: 100%; /* Adjust as needed */
+            overflow: hidden;
+        }
+        
+        .more button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5); /* Optional: Adds a semi-transparent background */
+            color: white;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        
+        .more button h3 {
+            margin: 0;
+        }
+        
+        
+        .info{
+            display: none;
+            background: transparent;
+            color: #fff;
+            width: 100%;
+            height: auto;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            margin: 0;
+            overflow: hidden;
+            transition: max-height 1s ease-out, padding 1s ease-out;
+            transition: max-height 0.6s ease, padding 0.6s ease, opacity 0.6s ease;
+        }
+        
+        .info.open {
+            max-height: 500px;
+            padding: 40px;
+            opacity: 1;
+        }
+        
+        .info .details{
+            background-color: #141414;
+            margin: 0px 10px 0px 10px;
+            border-radius: 16px;
+            padding: 2px;
+        }
+        .info .details button{
+            background: transparent;
+            color: #fff;
+            border: none;
+            margin: 10px;
+        }
+        .info .details button h2{
+            padding: 16px;
+            text-align: left;
+            justify-content: left;
+            align-items: left;
+            font-size: 22px;
+        }
+        .info .resume{
+            align-items: left;
+            justify-content: left;
+            text-align: left;
+            margin: 4px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .info .resume #dd{
+            background: transparent;
+            color: #fff;
+            border: 3px solid #fff;
+            border-radius: 42px;
+            width: 260px;
+            height: 60px;
+            padding: 12px;
+            margin-left: 12px;
+            font-size: 24px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .info .resume #dd:hover{
+            background-color: #fff;
+            color: #000;
+        }
+        .info .resume .pp{
+            border: none;
+            background: none;
+            text-decoration: none;
+            font-size: 24px;
+            padding: 12px;
+            margin-left: 12px;
+            font-weight: 600;
+        }
+        .info .resume .pp:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        .pro {
+            display: none;
+            margin-top: 12px;
+            background-color: #000;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .main {
+            display: flex;
+            gap: 20px;
+            height: 100%;
+        }
+        
+        .left-div {
+            flex: 1;
+            background-color: #262525;
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+            border-radius: 16px;
+            max-height: 90vh;
+            scrollbar-width: none; /* For Firefox */
+            -ms-overflow-style: none; /* For Internet Explorer and Edge */
+        }
+        
+        .projects h1 {
+            margin-top: 0;
+            font-weight: 800;
+        }
+        
+        .projects hr {
+            border: none;
+            border-top: 1px solid #555;
+            margin: 20px 0;
+        }
+        
+        .projects h2 a{
+            text-decoration: none;
+            font-size: 22px;
+            color: #4a90e2;
+        }
+        .projects h2 a:hover{
+            text-decoration: underline;
+        }
+        
+        .projects h3 {
+            font-size: 1.1em;
+            font-weight: normal;
+            margin: 4px;
+            color: #aaa;
+        }
+        .projects #str{
+            margin-top: 10px;
+        }
+        
+        .projects ul {
+            padding-left: 20px;
+        }
+        
+        .right-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .right-top{
+            max-height: 55vh;
+            /* flex: 1; */
+            border-radius: 16px;
+            background-color: #fff;
+            display: flex;
+            overflow-y: auto;
+            scrollbar-width: none; /* For Firefox */
+            -ms-overflow-style: none; /* For Internet Explorer and Edge */
+        } 
+        .right-container .right-top .certify{
+            max-height: 55vh;
+            color: #000;
+            background: transparent;
+            padding: 20px;
+            width: 100%;
+        }
+        .right-container .right-top .certify img{
+            width: 60px;
+            height: 60px;
+            margin: 4px;
+        }
+        .right-container .right-top .certify span{
+            display: flex;
+        }
+        .right-container .right-top .certify span p{
+            padding: 22px 0px 0px 16px;
+            font-size: 18px;
+            font-weight: 800;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .right-container .right-top .certify h1, 
+        .right-container .right-top .certify p{
+            color: #000;
+        }
+        .right-bottom {
+            flex: 1;
+            background: transparent;
+            color: white;
+            padding: 10px;
+        }
+        .right-bottom .skillsets a button{
+            background: transparent;
+            padding: 10px;
+            border-radius: 40px;
+            border: 2px solid #fff;
+            color: #fff;
+            font-size: 18px;
+            margin-top: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .right-bottom .skillsets a button:hover{
+            cursor: pointer;
+            color: #000;
+            background-color: #fff;
+            border: 2px solid #fff;
+        }
+        .right-bottom hr{
+            margin: 6px;
+        }
+        
+        
+        
+        @media (max-width: 768px) {
+            .main {
+                flex-direction: column;
+            }
+            
+            .left-div, .right-container {
+                width: 100%;
+            }
+            
+            .right-container {
+                gap: 10px;
+            }
+        }
+        
+        .footer {
+            background: transparent;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 20px;
+            border: none;
+        }
+        
+        .footer .contacts {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding-left: 30px ;
+            min-width: 300px;
+            max-width: 600px;
+            margin-top: 34px;
+        }
+        
+        .footer .contacts span {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .footer .contacts span img {
+            width: 32px;
+            height: 32px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .footer .contacts span p {
+            color: #fff;
+            font-size: 18px;
+            padding-top: 8px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .footer .contacts span #rr{
+            transition: 0.2s;
+        }
+        .footer .contacts span #rr:hover{
+            cursor: pointer;
+            scale: 1.2;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: #202020;
+            padding: 18px;
+            border-radius: 16px;
+        }
+        
+        .form input[type="text"],
+        .form input[type="email"],
+        .form textarea {
+            color: #000;
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 900;
+        }
+        
+        .form textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .form input[type="submit"],
+        .form input[type="reset"] {
+            background: transparent;
+            color: #fff;
+            padding: 0.75rem 1rem;
+            border: 2px solid #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 900;
+            transition: 0.2s;
+        }
+        
+        .form input[type="submit"]:hover,
+        .form input[type="reset"]:hover {
+            background-color: #fff;
+            color: #000;
+        }
+        .contact-form #cc{
+            border-radius: 40px;
+            width: 160px;
+            height: 3px;
+            background-color: #fff;
+            margin-bottom: 18px;
+            margin-top: 4px;
+        }
+        .footer .contacts a button{
+            background: transparent;
+            color: #fff;
+            padding: 10px 14px;
+            font-size: 20px;
+            border: 2px solid #fff;
+            border-radius: 50px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-bottom: 16px;
+        }
+        .footer .contacts a button:hover{
+            background-color: #fff;
+            color: #000;
+            border: 2px solid #fff;
+            
+        }
+        
+        @media screen and (max-width: 768px) {
+            .footer {
+                flex-direction: column;
+            }
+            
+            .footer .contacts,
+            .contact-form {
+                width: 100%;
+                max-width: none;
+                padding: 20px;
+            }
+            
+            .footer .contacts {
+                margin-bottom: 20px;
+            }
+            
+            .footer .contacts span {
+                /* flex-direction: column; */
+                align-items: flex-start;
+            }
+            
+            .footer .contacts span img {
+                margin-bottom: 5px;
+            }
+            
+            .footer .contacts span p {
+                font-size: 16px;
+            }
+        }
+        
+        .copy{
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 10px;
+            padding: 0;
+            margin-bottom: -20px;
+        }
+        .copy p{
+            color: #fff;
+            font-size: 14px;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="penal.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="content">
+        <b><span id="element"></span></b>
+    </div>
+    
+    <section id="sec-1">
+        <div class="container">
+            <a href="#sec-2">
+                <div class="scroll-down"></div>
+            </a>
+        </div>
+    </section>
+</div>
+
+
+<div class="components">
+    <div class="about">
+        <br><br><br><br>
+        <a href="#aboutInfo"><button id="showInfoButton"><h3>About me</h3></button></a>
+    </div>
+    
+    <div class="more">
+        <br><br><br><br>
+        <a href="#explore"><button id="more"><h3>Explore</h3></button></a>
+    </div>
+    
+    <div class="contact">
+        <br><br><br><br>
+        <a href="#contact"><button id="me"><h3>Contact me</h3></button></a>
+    </div>
+</div>
+
+
+<div class="info" id="aboutInfo">
+    <br>
+    <div class="details">
+        <button>
+            <h2>
+                An innovative developer merging frontend finesse with AI prowess. <br>
+                I create intuitive web experiences and smart systems that simplify digital life. <br>
+                An AI enthusiast passionate about pushing tech - boundaries, eager to contribute the best of my 
+                knowledge to develop solutions that are both elegent and intelligent. <br><br>
+                Let's build the future together.
+            </h2>
+        </button>
+        <div class="resume">
+            <a href="https://drive.google.com/file/d/1dKSz-wEvEG8ZkZ1iqM_uKPAXHpFocDcr/view?usp=sharing"><button id="dd">Get my Resume</button></a>
+            <a href="#explore"><button class="pp" id="more">More◥</button></a>
+        </div>    
+    </div>    
+</div>
+
+
+<div class="pro" id="explore">
+    <div class="main">
+        
+        <div class="left-div">
+            <div class="projects">
+                <h1>Projects and Experience</h1>
+                <hr>
+                <h2><a href="https://github.com/lava918/Spam_e-mail_filteration_python_and_machine_learning">» Spam E-mail Filteration - A solution for seperating spam emails from your mail Workspace.</a></h2>
+                <h3>[ Tech Stack - Python 3, Advanced Machine Learning Algorithms ]</h3>
+                <ul>
+                    <li>Developed a robust spam email filtration system using Python and advanced machine learning algorithms.</li>
+                    <li>Analysed a dataset of 5000+ emails to train and validate the model.</li>
+                    <li>Implemented feature extraction techniques and trained multiple classifiers (Naive Bayes, Random Forest, SVM).</li>
+                    <li>Achieved a 96% accuracy rate in spam detection, significantly improving email management efficiency.</li>
+                </ul>
+                
+                <hr>
+                
+                <h2><a href="https://cert.certifidoc.com/certificate/71a311aa-9108-45fb-94df-d86af84732f0">◆ Internship @Skill-Chase | Web-Developer</a></h2>
+                <h3><b>|| Intern Role - Technical Lead, Project Leader, Team Head ||</b></h3>
+                <h3 id="str">[Tech Stack - JavaScript, React.js, Tailwind CSS, Bootstrap, HTML5]</h3>
+                <ul>
+                    <li>Worked as team leader and technical lead, driving collaboration and gathering resources to streamline development.</li>
+                    <li>Contributed extensively to the codebase while facilitating code reviews, testing, and debugging sessions.</li>
+                    <li>Fostered a collaborative environment, ensuring high-quality, well-tested project completion.</li>
+                    <li>Utilized JavaScript, React.js, Tailwind CSS, Bootstrap and HTML5 for responsive and dynamic UI/UX design.</li>
+                </ul>
+                
+                <hr>
+                
+                <h2><a href="https://drive.google.com/file/d/15zDRU5xX4Wrl_QzifkYWWsKJ3rTcu_PM/view?usp=sharing">» The Food Basin - Online Food Ordering Website Interface.</a></h2>
+                <h3>[ Tech Stack - JavaScript, React.js,  Bootstrap, HTML5, CSS3 ]</h3>
+                <ul>
+                    <li>Designed and implemented a responsive, user-friendly interface for ordering food from various cuisines and fast-food chains.</li>
+                    <li>Integrated geolocation API to allow users to explore nearby restaurants, enhancing user experience.</li>
+                    <li>Implemented a shopping cart system and order tracking functionality using JavaScript.</li>
+                    <li>Optimized site performance, achieving a 90+ score on Google Page Speed Insights for mobile and desktop.</li>
+                </ul>
+                
+                <hr>
+                
+                <h2><a href="https://github.com/lava918/Snake-Game-using-Python">» Snake Game with Python | Mini Game</a></h2>
+            <h3>[ Tech Stack - Python ]</h3>
+            <ul>
+                <li>"Pixel Serpent: Retro Reborn" - Classic Snake game reimagined in Python, blending nostalgia with modern coding.</li>
+                <li>"Grow or Die: Gridlock Challenge" - Navigate a hungry snake through a minimalist arena, avoiding self-collision while chasing food.</li>
+                <li>"Pygame Mastery: 100 Lines of Fun" - Compact yet complete game showcasing efficient Python programming with Pygame.</li>
+                <li>"Endless Pursuit: Loop the Loop" - Traverse screen edges in this addictive game of strategy, reflexes, and endless growth.</li>
+            </ul>
+            
+            
+        </div>
+    </div>
+    
+    
+    <div class="right-container">
+        <div class="right-top">
+            <div class="certify">
+                <h1>Certifications</h1>
+                <br>
+                <hr>
+                <br>
+                
+                <span><img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/University_of_Michigan_Logo.png" alt=""><p>University of Michigan - Python 3 Speacialization</p></span>
+                <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo0MCCiwkDJStbEhL3B76ajuvBx8_QZVu7aw&s" alt=""><p>Stanford University - Machine Learning</p></span>
+                <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyGVEhG7-oISAxZkA6-2vCzSzpR8VcvmyQNA&s" alt=""><p>University of California - OOPs in Java</p></span>
+                <span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png" alt=""><p>Google - Project Management Speacialization</p></span>
+                <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-3-zlgn9KhPuEAK5kYFECzbGvtmQf1DVT4g&s" alt=""><p>LearnQuest - Core Java Speacialization</p></span>
+                <span><img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA0L3YxMDkxLTA0LXhfMS5qcGc.jpg" alt=""><p>Meta - Programming with JavaScript</p></span>
+                <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdMCmMWD29POr2uf6leX9tJMladFDcn0PrlA&s" alt=""><p>Illinois Tech - Computer Networking</p></span>
+                <br>
+                
+            </div>
+        </div>
+        
+        
+        <div class="right-bottom">
+            <h1>Skillsets</h1>
+            <hr>
+            <div class="skillsets">
+                <a href="https://en.wikipedia.org/wiki/Artificial_intelligence"><button>Artificial Intelligence</button></a>
+                <a href="https://en.wikipedia.org/wiki/Python_(programming_language)"><button>Python</button></a>
+                <a href="https://en.wikipedia.org/wiki/JavaScript"><button>JavaScript</button></a>
+                <a href="https://en.wikipedia.org/wiki/Java_(programming_language)"><button>Java</button></a>
+                <a href="https://en.wikipedia.org/wiki/C_(programming_language)"><button>C</button></a>
+                <a href="https://en.wikipedia.org/wiki/C%2B%2B"><button>C++</button></a>
+                <a href="https://en.wikipedia.org/wiki/React_(JavaScript_library)"><button>React.js</button></a>
+                <a href="https://en.wikipedia.org/wiki/Node.js"><button>Node.js</button></a>
+                <a href="https://en.wikipedia.org/wiki/MongoDB"><button>Mongo DB</button></a>
+                <a href="https://en.wikipedia.org/wiki/MySQL"><button>MySQL</button></a>
+                <a href="https://en.wikipedia.org/wiki/Machine_learning"><button>Machine Learning</button></a>
+                <a href="https://techdevguide.withgoogle.com/paths/data-structures-and-algorithms/"><button>DSA</button></a>
+                <a href="https://www.figma.com/resource-library/difference-between-ui-and-ux/"><button>UI/UX</button></a>
+                <a href="https://cloud.google.com/"><button>Cloud</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<div class="footer" id="contact">
+
+    <div class="contact-form" id="contact">
+        <h1>Get in touch</h1>
+        <hr id="cc">
+        <form action="https://api.web3forms.com/submit" method="POST" class="form">
+            <input type="hidden" name="access_key" value="fc3ca5ab-0f44-4f73-bf73-802a286efb8e">
+        
+            <input type="text" name="name" placeholder="  Your Name" class="text"><br>
+            <input type="email" name="email" placeholder="  Your Email" class="mail"><br>
+            <textarea name="message" placeholder="  Your Message" class="area"></textarea><br>
+            <input type="submit" value="Submit" class="submit">
+            <input type="reset" value="Reset" class="reset">
+        </form>
+    </div>
+    
+    
+    <div class="contacts">
+        <hr>
+        <br>
+        <br>
+        <span><img src="https://i.ibb.co/18FbR9y/icons8-university-100-1.png" alt="icons8-university-100-1" alt=""><p>GLA University</p></span>
+        <span><img src="https://cdn.iconscout.com/icon/free/png-256/free-google-mail-logo-icon-download-in-svg-png-gif-file-formats--gmail-productivity-apps-pack-logos-icons-8630400.png?f=webp&w=256" alt=""><p>lavanyasharma6t9@gmail.com</p></span>
+        <span><img src="https://i.ibb.co/RyvnbxR/icons8-location-96-1.png" alt=""><p>Agra, Uttar Pradesh, India</p></span>
+        <span>
+            <a href="https://github.com/lava918"><img src="https://i.ibb.co/tJxSj61/icons8-github-96.png" alt="" id="rr"></a>
+            <a href="https://www.linkedin.com/in/lavanya-sharma-329b41246/"><img src="https://i.ibb.co/r23W63B/icons8-linkedin-100.png" alt="" id="rr"></a>
+            <a href="https://www.x.com"><img src="https://img.freepik.com/free-vector/new-2023-twitter-logo-x-icon-design_1017-45418.jpg?size=338&ext=jpg&ga=GA1.1.1819120589.1728604800&semt=ais_hybrid-rr-similar" alt="" id="rr"></a>
+        </span>
+        <a href="https://drive.google.com/file/d/1dKSz-wEvEG8ZkZ1iqM_uKPAXHpFocDcr/view?usp=sharing"><button>Get my Resume</button></a>
+        <br>
+        <hr>
+    </div>
+</div>
+<div class="copy">
+    <p>Copyright © 2024 | All Rights Reserved @ Lavanya Sharma</p>
+</div>
+</div>
+
+
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+<script>
+    var typed = new Typed('#element', {
+        strings: ['<b>Hello, I am Lavanya Sharma, just a human.</b>'],
+        typeSpeed: 86,
+    });
+    
+    const showInfoButton = document.getElementById('showInfoButton');
+    const aboutInfo = document.getElementById('aboutInfo');
+    showInfoButton.addEventListener('click', () => {
+        aboutInfo.style.display = 'block'; // Show the info div
+    });
+    
+    
+    const showExplore = document.getElementById('more');
+    const explore = document.getElementById('explore');
+    showExplore.addEventListener('click', () => {
+        explore.style.display = 'block'; // Show the explore div
+    });
+    
+    const a = document.querySelector('.pp');
+    const b = document.querySelector('.pro');
+    a.addEventListener('click', () => {
+        b.style.display = 'block'; // Hide the explore div when the 'More' link is clicked
+    })
+</script>
+
+<!-- <script src="main.js"></script> -->
+</body>
+</html>
